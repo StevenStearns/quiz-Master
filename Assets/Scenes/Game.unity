@@ -530,7 +530,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 499253594879651649, guid: 2eb53c91d67b11f4db9c71056219b203, type: 3}
       propertyPath: m_Name
-      value: AnswerButton(0) (2)
+      value: AnswerButton(2)
       objectReference: {fileID: 0}
     - target: {fileID: 8715072197808218151, guid: 2eb53c91d67b11f4db9c71056219b203, type: 3}
       propertyPath: m_Pivot.x
@@ -708,7 +708,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 499253594879651649, guid: 2eb53c91d67b11f4db9c71056219b203, type: 3}
       propertyPath: m_Name
-      value: AnswerButton(0) (1)
+      value: AnswerButton(1)
       objectReference: {fileID: 0}
     - target: {fileID: 8715072197808218151, guid: 2eb53c91d67b11f4db9c71056219b203, type: 3}
       propertyPath: m_Pivot.x
@@ -801,6 +801,26 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8715072197808218151, guid: 2eb53c91d67b11f4db9c71056219b203, type: 3}
   m_PrefabInstance: {fileID: 921221504}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1037865148 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 499253594879651649, guid: 2eb53c91d67b11f4db9c71056219b203, type: 3}
+  m_PrefabInstance: {fileID: 7518819653370157103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1124001121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 499253594879651649, guid: 2eb53c91d67b11f4db9c71056219b203, type: 3}
+  m_PrefabInstance: {fileID: 921221504}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1182155406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 499253594879651649, guid: 2eb53c91d67b11f4db9c71056219b203, type: 3}
+  m_PrefabInstance: {fileID: 1312889258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1291707256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 499253594879651649, guid: 2eb53c91d67b11f4db9c71056219b203, type: 3}
+  m_PrefabInstance: {fileID: 553347391}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1312889258
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -810,7 +830,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 499253594879651649, guid: 2eb53c91d67b11f4db9c71056219b203, type: 3}
       propertyPath: m_Name
-      value: AnswerButton(0) (3)
+      value: AnswerButton(3)
       objectReference: {fileID: 0}
     - target: {fileID: 8715072197808218151, guid: 2eb53c91d67b11f4db9c71056219b203, type: 3}
       propertyPath: m_Pivot.x
@@ -1257,6 +1277,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questionText: {fileID: 177730237}
   strQuestion: {fileID: 11400000, guid: 45f55f811f34f7c4997c2f46d0874de5, type: 2}
+  answerButtons:
+  - {fileID: 1037865148}
+  - {fileID: 1124001121}
+  - {fileID: 1291707256}
+  - {fileID: 1182155406}
 --- !u!1 &1964683804
 GameObject:
   m_ObjectHideFlags: 0
