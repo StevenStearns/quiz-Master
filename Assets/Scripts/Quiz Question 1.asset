@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Quiz Question 1
   m_EditorClassIdentifier: 
   strQuestion: What animal is sonic
+  stranswers:
+  - HedgeHog
+  - Ferret
+  - rat
+  - porcupine
+  intCorrectAnswerIndex: 0
