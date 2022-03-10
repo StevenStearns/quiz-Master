@@ -15,6 +15,19 @@ public class Quiz : MonoBehaviour
 
     async void Start()
     {
+        GetNextQuestion();
+       //DisplayQuestion();
+    }
+
+    void GetNextQuestion()
+    {
+        SetButtonState(true);
+        SetDefaultButtonSprites();
+        DisplayQuestion();
+    }
+
+    void DisplayQuestion()
+    {
         questionText.text = strQuestion.GetQuestion();
 
         for(int intI = 0; intI < answerButtons.Length; intI++)
@@ -22,6 +35,24 @@ public class Quiz : MonoBehaviour
 
             TextMeshProUGUI buttonText = answerButtons[intI].GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = strQuestion.GetAnswer(intI);
+        }
+    }
+
+    async void SetButtonState(bool state)
+    {
+        for(int intI = 0; intI < answerButtons.Length; intI++)
+        {
+            Button btnButton = answerButtons[intI].GetComponent<Button>();
+            btnButton.interactable = state;
+        }
+    }
+
+    void SetDefaultButtonSprites()
+    {
+        for(int intI = 0; intI < answerButtons.Length; intI++)
+        {
+            Image buttonImage = answerButtons[intI].GetComponent<Image>();
+            buttonImage.sprite = defaultAnswerSprite;
         }
     }
 
@@ -44,7 +75,8 @@ public class Quiz : MonoBehaviour
             buttonImage = answerButtons[intCorrectAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
         }
-    }
+        SetButtonState(false);
+    } //Onselectbutton
 
    
  
