@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
 
     [SerializeField] float fltTimeToCompleteQuestion = 30f;
     [SerializeField] float fltTimeToShowCorrectAnswer = 10f;
-    bool blIsAnsweringQuestion;
+    public bool blIsAnsweringQuestion;
     float fltTimerValue;
 
     void Update()
@@ -24,9 +24,10 @@ public class Timer : MonoBehaviour
 
     void UpdateTimer()
     {
+        fltTimerValue -= Time.deltaTime;
         if(blIsAnsweringQuestion)
         {
-            if(fltTimerValue >0)
+            if(fltTimerValue > 0)
             {
                 fltFillFraction = fltTimerValue / fltTimeToCompleteQuestion;
             }
@@ -38,7 +39,7 @@ public class Timer : MonoBehaviour
         }
         else
         {
-            if(fltTimerValue >0)
+            if(fltTimerValue > 0)
             {
                 fltFillFraction = fltTimerValue / fltTimeToShowCorrectAnswer;
             }

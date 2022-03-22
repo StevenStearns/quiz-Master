@@ -6,17 +6,45 @@ using UnityEngine.UI;
 
 public class Quiz : MonoBehaviour
 {
+    [Header("Questions")]
     [SerializeField] TextMeshProUGUI questionText;
     [SerializeField] QuestionsSO strQuestion;
+
+    [Header("Answers")]
     [SerializeField] GameObject[] answerButtons;
     int intCorrectAnswerIndex;
+    bool blHasAnsweredEarly;
+
+    [Header("Button Color")]
     [SerializeField] Sprite defaultAnswerSprite;
     [SerializeField] Sprite correctAnswerSprite;
+    [Header("Timer")]
+    
+    [SerializeField] Image TimerImage;
+    Timer timer;    
 
-    async void Start()
+    void Start()
     {
+        timer = FindObjectOfType<Timer>();
         GetNextQuestion();
        //DisplayQuestion();
+    }
+
+    void Update() 
+    {
+        TimerImage.fillAmount = timer.fltFillFraction;
+        if(timer.blLoadNextQuestion)
+        {
+            blHasAnsweredEarly = false;
+            GetNextQuestion();
+            timer.blLoadNextQuestion = false;
+        }
+        else if(!blHasAnsweredEarly && !timer.blIsAnsweringQuestion)
+        {
+            DisplayAnswer(-1);
+            SetButtonState(false);
+
+        }
     }
 
     void GetNextQuestion()
@@ -38,7 +66,7 @@ public class Quiz : MonoBehaviour
         }
     }
 
-    async void SetButtonState(bool state)
+    void SetButtonState(bool state)
     {
         for(int intI = 0; intI < answerButtons.Length; intI++)
         {
@@ -57,8 +85,17 @@ public class Quiz : MonoBehaviour
     }
 
     public void OnAnswerSelected(int intIndex)
+    {  
+        blHasAnsweredEarly = true;
+       DisplayAnswer(intIndex);
+    
+        SetButtonState(false);
+        timer.CancelTimer();
+    } //Onselectbutton
+
+    void DisplayAnswer(int intIndex)
     {
-        Image buttonImage;
+         Image buttonImage;
 
         if(intIndex == strQuestion.GetAnswerIndex())
         {
@@ -71,13 +108,10 @@ public class Quiz : MonoBehaviour
 
             intCorrectAnswerIndex = strQuestion.GetAnswerIndex();
             string strCorrectAnswer = strQuestion.GetAnswer(intCorrectAnswerIndex);
-            questionText.text = "Sorry, the correct answer was;" + intCorrectAnswerIndex;
+            questionText.text = "Sorry, the correct answer was;\n" + intCorrectAnswerIndex;
             buttonImage = answerButtons[intCorrectAnswerIndex].GetComponent<Image>();
-            buttonImage.sprite = correctAnswerSprite;
+            buttonImage.sprite = correctAnswerSprite;    
         }
-        SetButtonState(false);
-    } //Onselectbutton
-
-   
+    }
  
 }
