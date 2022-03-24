@@ -28,10 +28,17 @@ public class Quiz : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoretext;
     Scorekeeper Scorekeeper;
 
+    [Header("ProgressBar")]
+    [SerializeField] Slider progressBar;
+
+    public bool blIsComplete;
+
     void Start()
     {
         timer = FindObjectOfType<Timer>();
         Scorekeeper = FindObjectOfType<Scorekeeper>();
+        progressBar.maxValue = questions.Count;
+        progressBar.value = 0;
       
     }
 
@@ -60,6 +67,7 @@ public class Quiz : MonoBehaviour
           SetDefaultButtonSprites();
           GetRandomQuestion();
           DisplayQuestion();
+          progressBar.value++;
           Scorekeeper.IncrementQuestionsSeen();   
         }
        
@@ -114,6 +122,11 @@ public class Quiz : MonoBehaviour
         SetButtonState(false);
         timer.CancelTimer();
         scoretext.text = "Score: " + Scorekeeper.CalculateScore() + "%";
+
+        if(progressBar.value == progressBar.maxValue)
+        {
+            blIsComplete = true;
+        }
     } //Onselectbutton
 
     void DisplayAnswer(int intIndex)
