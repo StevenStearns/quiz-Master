@@ -22,11 +22,16 @@ public class Quiz : MonoBehaviour
     [Header("Timer")]
     
     [SerializeField] Image TimerImage;
-    Timer timer;    
+    Timer timer;
+
+    [Header("Scoring")]
+    [SerializeField] TextMeshProUGUI scoretext;
+    Scorekeeper Scorekeeper;
 
     void Start()
     {
         timer = FindObjectOfType<Timer>();
+        Scorekeeper = FindObjectOfType<Scorekeeper>();
       
     }
 
@@ -54,15 +59,16 @@ public class Quiz : MonoBehaviour
           SetButtonState(true);
           SetDefaultButtonSprites();
           GetRandomQuestion();
-          DisplayQuestion();   
+          DisplayQuestion();
+          Scorekeeper.IncrementQuestionsSeen();   
         }
        
     }
 
     void GetRandomQuestion()
     {
-        int intIndex = Random.Range(0, questions.Count);
-        strCurrentQuestion = questions[intIndex];
+        int intCorrectAnswerIndex = Random.Range(0, questions.Count);
+        strCurrentQuestion = questions[intCorrectAnswerIndex];
         
         if(questions.Contains(strCurrentQuestion))
         {
@@ -100,24 +106,27 @@ public class Quiz : MonoBehaviour
         }
     }
 
-    public void OnAnswerSelected(int intIndex)
+    public void OnAnswerSelected(int intCorrectAnswerIndex)
     {  
         blHasAnsweredEarly = true;
-       DisplayAnswer(intIndex);
+       DisplayAnswer(intCorrectAnswerIndex);
     
         SetButtonState(false);
         timer.CancelTimer();
+        scoretext.text = "Score: " + Scorekeeper.CalculateScore() + "%";
     } //Onselectbutton
 
-    void DisplayAnswer(int intIndex)
+    void DisplayAnswer(int intCorrectAnswerIndex)
     {
          Image buttonImage;
 
-        if(intIndex == strCurrentQuestion.GetAnswerIndex())
+        if(intCorrectAnswerIndex == strCurrentQuestion.GetAnswerIndex())
         {
             questionText.text = "Correct!";
-            buttonImage = answerButtons[intIndex].GetComponent<Image>();
+            buttonImage = answerButtons[intCorrectAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
+            Scorekeeper.IncrementCorrectAnswers();
+            
         }
         else
         {
