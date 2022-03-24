@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strQuestion: In Terraria What weapon was added due to the popularity of a Web comic.
   stranswers:
-  - 
-  - 
-  - 
+  - terrarian
+  - megashark
+  - Terrablade
   - Hammush
-  intCorrectAnswerIndex: 0
+  intCorrectAnswerIndex: 3

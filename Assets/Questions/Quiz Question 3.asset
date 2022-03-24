@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f29c84a22f3ec4182f698ecb4a2649, type: 3}
   m_Name: Quiz Question 3
   m_EditorClassIdentifier: 
-  strQuestion: "What is the reward for collecting all 999 Korok seeds in \nLegend
+  strQuestion: "What is the reward for collecting all 900 Korok seeds in \nLegend
     of Zelda Breath of the wild."
+  stranswers:
+  - A glider
+  - Hestu's gift
+  - The Master sword
+  - Hyrulian shield
+  intCorrectAnswerIndex: 1

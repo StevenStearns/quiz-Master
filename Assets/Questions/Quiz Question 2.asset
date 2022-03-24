@@ -14,3 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strQuestion: "how many castles does mario have to go through to get to \nPrincess
     peach in the original Super Mario Bros"
+  stranswers:
+  - 19
+  - 3
+  - 10
+  - 7
+  intCorrectAnswerIndex: 3

@@ -8,7 +8,7 @@ public class EndScreen : MonoBehaviour
     Scorekeeper scoreKeeper;
 
   
-    void Start()
+    void Awake()
     {
         scoreKeeper = FindObjectOfType<Scorekeeper>();
     }
