@@ -20,9 +20,9 @@ public class QuestionsSO : ScriptableObject
         return intCorrectAnswerIndex;
     }
 
-    public string GetAnswer(int intindex)
+    public string GetAnswer(int intIndex)
     {
-        return stranswers[intindex];
+        return stranswers[intIndex];
     }
 } // QuestionSO
 

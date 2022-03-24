@@ -13,7 +13,7 @@ public class Quiz : MonoBehaviour
 
     [Header("Answers")]
     [SerializeField] GameObject[] answerButtons;
-    int intCorrectAnswerIndex;
+    int intIndex;
     bool blHasAnsweredEarly;
 
     [Header("Button Color")]
@@ -67,8 +67,8 @@ public class Quiz : MonoBehaviour
 
     void GetRandomQuestion()
     {
-        int intCorrectAnswerIndex = Random.Range(0, questions.Count);
-        strCurrentQuestion = questions[intCorrectAnswerIndex];
+        int intIndex = Random.Range(0, questions.Count);
+        strCurrentQuestion = questions[intIndex];
         
         if(questions.Contains(strCurrentQuestion))
         {
@@ -106,24 +106,24 @@ public class Quiz : MonoBehaviour
         }
     }
 
-    public void OnAnswerSelected(int intCorrectAnswerIndex)
+    public void OnAnswerSelected(int intIndex)
     {  
         blHasAnsweredEarly = true;
-       DisplayAnswer(intCorrectAnswerIndex);
+       DisplayAnswer(intIndex);
     
         SetButtonState(false);
         timer.CancelTimer();
         scoretext.text = "Score: " + Scorekeeper.CalculateScore() + "%";
     } //Onselectbutton
 
-    void DisplayAnswer(int intCorrectAnswerIndex)
+    void DisplayAnswer(int intIndex)
     {
          Image buttonImage;
 
-        if(intCorrectAnswerIndex == strCurrentQuestion.GetAnswerIndex())
+        if(intIndex == strCurrentQuestion.GetAnswerIndex())
         {
             questionText.text = "Correct!";
-            buttonImage = answerButtons[intCorrectAnswerIndex].GetComponent<Image>();
+            buttonImage = answerButtons[intIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
             Scorekeeper.IncrementCorrectAnswers();
             
@@ -131,10 +131,10 @@ public class Quiz : MonoBehaviour
         else
         {
 
-            intCorrectAnswerIndex = strCurrentQuestion.GetAnswerIndex();
-            string strCorrectAnswer = strCurrentQuestion.GetAnswer(intCorrectAnswerIndex);
-            questionText.text = "Sorry, the correct answer was;\n" + intCorrectAnswerIndex;
-            buttonImage = answerButtons[intCorrectAnswerIndex].GetComponent<Image>();
+            intIndex = strCurrentQuestion.GetAnswerIndex();
+            string strCorrectAnswer = strCurrentQuestion.GetAnswer(intIndex);
+            questionText.text = "Sorry, the correct answer was;\n" + intIndex;
+            buttonImage = answerButtons[intIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;    
         }
     }
