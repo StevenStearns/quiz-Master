@@ -26,7 +26,7 @@ public class Quiz : MonoBehaviour
 
     [Header("Scoring")]
     [SerializeField] TextMeshProUGUI scoretext;
-    Scorekeeper Scorekeeper;
+    Scorekeeper scoreKeeper;
 
     [Header("ProgressBar")]
     [SerializeField] Slider progressBar;
@@ -36,7 +36,7 @@ public class Quiz : MonoBehaviour
     void Start()
     {
         timer = FindObjectOfType<Timer>();
-        Scorekeeper = FindObjectOfType<Scorekeeper>();
+        scoreKeeper = FindObjectOfType<Scorekeeper>();
         progressBar.maxValue = questions.Count;
         progressBar.value = 0;
       
@@ -68,7 +68,7 @@ public class Quiz : MonoBehaviour
           GetRandomQuestion();
           DisplayQuestion();
           progressBar.value++;
-          Scorekeeper.IncrementQuestionsSeen();   
+          scoreKeeper.IncrementQuestionsSeen();   
         }
        
     }
@@ -121,7 +121,7 @@ public class Quiz : MonoBehaviour
     
         SetButtonState(false);
         timer.CancelTimer();
-        scoretext.text = "Score: " + Scorekeeper.CalculateScore() + "%";
+        scoretext.text = "Score: " + scoreKeeper.CalculateScore() + "%";
 
         if(progressBar.value == progressBar.maxValue)
         {
@@ -138,7 +138,7 @@ public class Quiz : MonoBehaviour
             questionText.text = "Correct!";
             buttonImage = answerButtons[intIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
-            Scorekeeper.IncrementCorrectAnswers();
+            scoreKeeper.IncrementCorrectAnswers();
             
         }
         else

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strQuestion: In Terraria What weapon was added due to the popularity of a Web comic.
   stranswers:
-  - Atreus
   - 
-  - Loki
   - 
-  intCorrectAnswerIndex: 2
+  - 
+  - Hammush
+  intCorrectAnswerIndex: 0

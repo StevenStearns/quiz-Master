@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: Quiz Question 4
   m_EditorClassIdentifier: 
   strQuestion: In God Of War 2018 what did Krato's wife want to name thier son.
+  stranswers:
+  - Atreus
+  - 
+  - Loki
+  - 
+  intCorrectAnswerIndex: 2
